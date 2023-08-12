@@ -31,8 +31,11 @@ here are a few test cases to validate the output of your program.
 
 #### Steps to test:
 
-1. Java 8 and maven should be installed on the system
+1. Java 20 and maven should be installed on the system
 2. Download the project code
+   * Either by `git clone git@github.com:faisalazam/DaysDifferenceCalculator.git`
+   * Or by `git clone https://github.com/faisalazam/DaysDifferenceCalculator.git`
+   * Or by downloading the zip file from https://github.com/faisalazam/DaysDifferenceCalculator/archive/refs/heads/master.zip
 3. Navigate to the project folder/directory
 4. Package/generate the jar file by executing `mvn clean package` command from terminal
 5. Then execute `java -jar target/DaysDifferenceCalculator-1.0-SNAPSHOT.jar` command from terminal to see it in
