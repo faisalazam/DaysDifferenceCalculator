@@ -1,0 +1,11 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+/uiDesigner.xml
+/jpa-buddy.xml
+/fastRequest
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
