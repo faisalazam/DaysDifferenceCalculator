@@ -8,7 +8,7 @@ import static com.mindworks.calculator.days.DateFormat.MM_DD_YYYY;
 import static com.mindworks.calculator.days.DateFormat.MM_SLASH_DD_SLASH_YYYY;
 import static com.mindworks.calculator.days.DateFormat.YYYY_MM_DD;
 import static com.mindworks.calculator.days.DateFormat.YYYY_SLASH_MM_SLASH_DD;
-import static com.mindworks.calculator.days.DateFormat.fromFormat;
+import static com.mindworks.calculator.days.DateFormatable.fromFormat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DateFormatTest {

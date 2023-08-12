@@ -4,7 +4,7 @@ import java.io.PrintStream;
 import java.text.ParseException;
 import java.util.Scanner;
 
-import static com.mindworks.calculator.days.DateFormat.fromFormat;
+import static com.mindworks.calculator.days.DateFormatable.fromFormat;
 import static com.mindworks.calculator.days.DateFormat.values;
 import static com.mindworks.calculator.days.MyDate.DEFAULT_DATE_FORMAT;
 import static com.mindworks.calculator.days.MyDate.parse;
@@ -31,7 +31,7 @@ public class DayDifferenceCalculatorScanner {
         this.printStream.printf(WELCOME_TO_CALCULATOR_MESSAGE_FORMAT, boldColored());
     }
 
-    public MyDate getDate(final DateFormat dateFormat, final String promptMessage) {
+    public MyDate getDate(final DateFormatable dateFormat, final String promptMessage) {
         printStream.printf(promptMessage);
         MyDate myDate = null;
         boolean isInvalidDateProvided;
@@ -57,13 +57,13 @@ public class DayDifferenceCalculatorScanner {
         return doYouWantToContinue;
     }
 
-    public DateFormat getDateFormat() {
+    public DateFormatable getDateFormat() {
         printStream.printf(LIST_DATE_FORMATS_MESSAGE_FORMAT, textColor());
         of(values()).forEach(dateFormat -> printStream.printf("%n%s", dateFormat.getFormat()));
         printStream.printf(ENTER_DESIRED_FORMAT_PROMPT_MESSAGE_FORMAT, textColor());
 
         final String dateFormatStr = scanner.next();
-        final DateFormat dateFormat = fromFormat(dateFormatStr);
+        final DateFormatable dateFormat = fromFormat(dateFormatStr);
         return dateFormat == null ? DEFAULT_DATE_FORMAT : dateFormat;
     }
 

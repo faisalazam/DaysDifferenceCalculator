@@ -43,7 +43,7 @@ public class DayDifferenceCalculatorScannerTest {
     @Test
     public void shouldVerifySystemDoesNotAskUserAgainToEnterValidDateWhenAValidDateIsAlreadyEntered() throws Exception {
         final String promptMessage = "Enter date: ";
-        final DateFormat dateFormat = chooseOneOf(values());
+        final DateFormatable dateFormat = chooseOneOf(values());
         final String enteredDate = convert("2000/12/21", DEFAULT_DATE_FORMAT, dateFormat);
         setField(dayDifferenceCalculatorScanner, "scanner", new Scanner(enteredDate));
         assertThat(dayDifferenceCalculatorScanner.getDate(dateFormat, promptMessage).toString(), is(enteredDate));
@@ -55,7 +55,7 @@ public class DayDifferenceCalculatorScannerTest {
     @Test
     public void shouldVerifySystemKeepsAskingUserToEnterValidDateUntilAValidDateIsEntered() throws Exception {
         final String promptMessage = "Enter date: ";
-        final DateFormat dateFormat = chooseOneOf(values());
+        final DateFormatable dateFormat = chooseOneOf(values());
         final String enteredDate = convert("2000/12/21", DEFAULT_DATE_FORMAT, dateFormat);
         setField(dayDifferenceCalculatorScanner, "scanner", new Scanner("invalid_date\nanother_invalid_date\n" + enteredDate));
         assertThat(dayDifferenceCalculatorScanner.getDate(dateFormat, promptMessage).toString(), is(enteredDate));
@@ -92,12 +92,12 @@ public class DayDifferenceCalculatorScannerTest {
 
     @Test
     public void shouldReturnTheSpecifiedDateFormatWhenItIsValid() throws Exception {
-        for (DateFormat dateFormat : values()) {
+        for (DateFormatable dateFormat : values()) {
             setField(dayDifferenceCalculatorScanner, "scanner", new Scanner(dateFormat.getFormat()));
             assertThat(dayDifferenceCalculatorScanner.getDateFormat().getFormat(), is(dateFormat.getFormat()));
 
             assertThat(outputStream.toString(), containsString("Following are the date formats to choose from: "));
-            for (DateFormat dateFormat1 : values()) {
+            for (DateFormatable dateFormat1 : values()) {
                 assertThat(outputStream.toString(), containsString(dateFormat1.getFormat()));
             }
             assertThat(outputStream.toString(), containsString("Enter the desired format to use (else default 'yyyy/MM/dd' format will be used): "));
@@ -110,7 +110,7 @@ public class DayDifferenceCalculatorScannerTest {
         assertThat(dayDifferenceCalculatorScanner.getDateFormat().getFormat(), is(DEFAULT_DATE_FORMAT.getFormat()));
 
         assertThat(outputStream.toString(), containsString("Following are the date formats to choose from: "));
-        for (DateFormat dateFormat1 : values()) {
+        for (DateFormatable dateFormat1 : values()) {
             assertThat(outputStream.toString(), containsString(dateFormat1.getFormat()));
         }
         assertThat(outputStream.toString(), containsString("Enter the desired format to use (else default 'yyyy/MM/dd' format will be used): "));

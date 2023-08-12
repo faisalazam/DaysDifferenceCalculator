@@ -21,7 +21,7 @@ public class DayDifferenceCalculatorCLI {
 
     public static void main(final String[] args) {
         final DayDifferenceCalculatorScanner dayDifferenceCalculatorScanner = new DayDifferenceCalculatorScanner();
-        final DateFormat dateFormat = dayDifferenceCalculatorScanner.getDateFormat();
+        final DateFormatable dateFormat = dayDifferenceCalculatorScanner.getDateFormat();
         final String firstValidDate = convert(FIRST_VALID_DATE, DEFAULT_DATE_FORMAT, dateFormat);
         final String lastValidDate = convert(LAST_VALID_DATE, DEFAULT_DATE_FORMAT, dateFormat);
 

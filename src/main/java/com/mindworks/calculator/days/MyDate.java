@@ -17,7 +17,7 @@ public class MyDate {
     public static final int FIRST_VALID_YEAR = 1901;
     public static final String FIRST_VALID_DATE = "1901/01/01";
     public static final String LAST_VALID_DATE = "2999/12/31";
-    public static final DateFormat DEFAULT_DATE_FORMAT = YYYY_SLASH_MM_SLASH_DD;
+    public static final DateFormatable DEFAULT_DATE_FORMAT = YYYY_SLASH_MM_SLASH_DD;
 
     private final int day;
     private final int year;
@@ -37,7 +37,7 @@ public class MyDate {
         });
     }
 
-    private MyDate(final String dateStr, final DateFormat dateFormat) throws ParseException {
+    private MyDate(final String dateStr, final DateFormatable dateFormat) throws ParseException {
         final String[] splitDate = dateStr.split(dateFormat.getSeparator());
         this.year = parseInt(splitDate[dateFormat.getYearOffset()]);
         this.month = fromNumber(parseInt(splitDate[dateFormat.getMonthOffset()]));
@@ -56,7 +56,7 @@ public class MyDate {
         return parse(dateStr, DEFAULT_DATE_FORMAT);
     }
 
-    public static MyDate parse(final String dateStr, final DateFormat dateFormat) throws ParseException {
+    public static MyDate parse(final String dateStr, final DateFormatable dateFormat) throws ParseException {
         try {
             return new MyDate(dateStr, dateFormat);
         } catch (Exception e) {
@@ -68,7 +68,7 @@ public class MyDate {
         }
     }
 
-    public static String convert(final String dateStr, final DateFormat sourceDateFormat, final DateFormat targetDateFormat) {
+    public static String convert(final String dateStr, final DateFormatable sourceDateFormat, final DateFormatable targetDateFormat) {
         final String[] splitDate = dateStr.split(sourceDateFormat.getSeparator());
         return targetDateFormat.getFormat()
                 .replace("dd", splitDate[sourceDateFormat.getDayOffset()])

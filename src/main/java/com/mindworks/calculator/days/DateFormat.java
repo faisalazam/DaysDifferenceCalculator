@@ -1,6 +1,6 @@
 package com.mindworks.calculator.days;
 
-public enum DateFormat {
+public enum DateFormat implements DateFormatable {
     DD_MM_YYYY("dd-MM-yyyy", "-", 0, 1, 2),
     MM_DD_YYYY("MM-dd-yyyy", "-", 1, 0, 2),
     YYYY_MM_DD("yyyy-MM-dd", "-", 2, 1, 0),
@@ -27,31 +27,27 @@ public enum DateFormat {
         this.yearOffset = yearOffset;
     }
 
-    public static DateFormat fromFormat(final String format) {
-        for (DateFormat dateFormat : values()) {
-            if (dateFormat.getFormat().equals(format)) {
-                return dateFormat;
-            }
-        }
-        return null;
-    }
-
+    @Override
     public String getFormat() {
         return format;
     }
 
+    @Override
     public String getSeparator() {
         return separator;
     }
 
+    @Override
     public int getDayOffset() {
         return dayOffset;
     }
 
+    @Override
     public int getMonthOffset() {
         return monthOffset;
     }
 
+    @Override
     public int getYearOffset() {
         return yearOffset;
     }

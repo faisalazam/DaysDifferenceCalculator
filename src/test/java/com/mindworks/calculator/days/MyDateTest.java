@@ -49,7 +49,7 @@ public class MyDateTest {
 
     @Test
     public void shouldParseSuccessfullyWithSpecifiedDateFormatWhenDateStringIsBetween19010101And29991231() {
-        final List<Pair<String, DateFormat>> validDateStrings = new ArrayList<>();
+        final List<Pair<String, DateFormatable>> validDateStrings = new ArrayList<>();
         validDateStrings.add(new Pair<>("15-12-1901", DD_MM_YYYY));
         validDateStrings.add(new Pair<>("11-21-1945", MM_DD_YYYY));
         validDateStrings.add(new Pair<>("2000-09-14", YYYY_MM_DD));
@@ -267,13 +267,13 @@ public class MyDateTest {
                 );
     }
 
-    private void verifyDateStringIsParsedSuccessfullyWithSpecifiedFormat(final List<Pair<String, DateFormat>> validDateStrings) {
+    private void verifyDateStringIsParsedSuccessfullyWithSpecifiedFormat(final List<Pair<String, DateFormatable>> validDateStrings) {
         validDateStrings
                 .forEach(
                         validDateString -> {
                             try {
                                 final String dateStr = validDateString.fst();
-                                final DateFormat dateFormat = validDateString.snd();
+                                final DateFormatable dateFormat = validDateString.snd();
                                 final MyDate myDate = parse(dateStr, dateFormat);
                                 final String[] dateParts = dateStr.split(dateFormat.getSeparator());
                                 assertThat(myDate.getYear(), is(parseInt(dateParts[dateFormat.getYearOffset()])));
