@@ -11,7 +11,8 @@ public class ReflectionHelper {
 
     /*
         I guess, since Java 17, to use reflection, we need to add the following to VM options. POM.xml has already
-        been updated accordingly, but don't forget to add the following to VM option if running this class from IDE:
+        been updated accordingly, but don't forget to add the following to VM options if runner class is using this method
+        and you are running the runner class from IDE:
         --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED
      */
     public static void setField(Object object, final String fieldName, final Object fieldValue) throws Exception {

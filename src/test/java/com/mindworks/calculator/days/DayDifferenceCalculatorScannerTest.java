@@ -25,7 +25,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /*
-    Don't forget to add the following to VM option if running this class from IDE
+    Don't forget to add the following to VM options if running this class from IDE
     --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED
 */
 public class DayDifferenceCalculatorScannerTest {
