@@ -19,10 +19,10 @@ public class MyDate {
     public static final String LAST_VALID_DATE = "2999/12/31";
     public static final DateFormat DEFAULT_DATE_FORMAT = YYYY_SLASH_MM_SLASH_DD;
 
-    private int day;
-    private int year;
-    private Month month;
-    private String dateStr;
+    private final int day;
+    private final int year;
+    private final Month month;
+    private final String dateStr;
 
     // don't really need to use this static collection, as the calculation can happen on the fly
     // as well (because it is not an expensive calculation), but in case of expensive operations,

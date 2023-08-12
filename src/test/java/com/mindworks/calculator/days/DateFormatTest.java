@@ -1,6 +1,6 @@
 package com.mindworks.calculator.days;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static com.mindworks.calculator.days.DateFormat.DD_MM_YYYY;
 import static com.mindworks.calculator.days.DateFormat.DD_SLASH_MM_SLASH_YYYY;
@@ -9,56 +9,55 @@ import static com.mindworks.calculator.days.DateFormat.MM_SLASH_DD_SLASH_YYYY;
 import static com.mindworks.calculator.days.DateFormat.YYYY_MM_DD;
 import static com.mindworks.calculator.days.DateFormat.YYYY_SLASH_MM_SLASH_DD;
 import static com.mindworks.calculator.days.DateFormat.fromFormat;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DateFormatTest {
 
     @Test
     public void shouldVerifyEnumItems() {
-        assertThat(DD_MM_YYYY.getFormat(), is("dd-MM-yyyy"));
-        assertThat(MM_DD_YYYY.getFormat(), is("MM-dd-yyyy"));
-        assertThat(YYYY_MM_DD.getFormat(), is("yyyy-MM-dd"));
-        assertThat(DD_SLASH_MM_SLASH_YYYY.getFormat(), is("dd/MM/yyyy"));
-        assertThat(MM_SLASH_DD_SLASH_YYYY.getFormat(), is("MM/dd/yyyy"));
-        assertThat(YYYY_SLASH_MM_SLASH_DD.getFormat(), is("yyyy/MM/dd"));
+        assertEquals("dd-MM-yyyy", DD_MM_YYYY.getFormat());
+        assertEquals("MM-dd-yyyy", MM_DD_YYYY.getFormat());
+        assertEquals("yyyy-MM-dd", YYYY_MM_DD.getFormat());
+        assertEquals("dd/MM/yyyy", DD_SLASH_MM_SLASH_YYYY.getFormat());
+        assertEquals("MM/dd/yyyy", MM_SLASH_DD_SLASH_YYYY.getFormat());
+        assertEquals("yyyy/MM/dd", YYYY_SLASH_MM_SLASH_DD.getFormat());
 
-        assertThat(DD_MM_YYYY.getSeparator(), is("-"));
-        assertThat(MM_DD_YYYY.getSeparator(), is("-"));
-        assertThat(YYYY_MM_DD.getSeparator(), is("-"));
-        assertThat(DD_SLASH_MM_SLASH_YYYY.getSeparator(), is("/"));
-        assertThat(MM_SLASH_DD_SLASH_YYYY.getSeparator(), is("/"));
-        assertThat(YYYY_SLASH_MM_SLASH_DD.getSeparator(), is("/"));
+        assertEquals("-", DD_MM_YYYY.getSeparator());
+        assertEquals("-", MM_DD_YYYY.getSeparator());
+        assertEquals("-", YYYY_MM_DD.getSeparator());
+        assertEquals("/", DD_SLASH_MM_SLASH_YYYY.getSeparator());
+        assertEquals("/", MM_SLASH_DD_SLASH_YYYY.getSeparator());
+        assertEquals("/", YYYY_SLASH_MM_SLASH_DD.getSeparator());
 
-        assertThat(DD_MM_YYYY.getDayOffset(), is(0));
-        assertThat(MM_DD_YYYY.getDayOffset(), is(1));
-        assertThat(YYYY_MM_DD.getDayOffset(), is(2));
-        assertThat(DD_SLASH_MM_SLASH_YYYY.getDayOffset(), is(0));
-        assertThat(MM_SLASH_DD_SLASH_YYYY.getDayOffset(), is(1));
-        assertThat(YYYY_SLASH_MM_SLASH_DD.getDayOffset(), is(2));
+        assertEquals(0, DD_MM_YYYY.getDayOffset());
+        assertEquals(1, MM_DD_YYYY.getDayOffset());
+        assertEquals(2, YYYY_MM_DD.getDayOffset());
+        assertEquals(0, DD_SLASH_MM_SLASH_YYYY.getDayOffset());
+        assertEquals(1, MM_SLASH_DD_SLASH_YYYY.getDayOffset());
+        assertEquals(2, YYYY_SLASH_MM_SLASH_DD.getDayOffset());
 
-        assertThat(DD_MM_YYYY.getMonthOffset(), is(1));
-        assertThat(MM_DD_YYYY.getMonthOffset(), is(0));
-        assertThat(YYYY_MM_DD.getMonthOffset(), is(1));
-        assertThat(DD_SLASH_MM_SLASH_YYYY.getMonthOffset(), is(1));
-        assertThat(MM_SLASH_DD_SLASH_YYYY.getMonthOffset(), is(0));
-        assertThat(YYYY_SLASH_MM_SLASH_DD.getMonthOffset(), is(1));
+        assertEquals(1, DD_MM_YYYY.getMonthOffset());
+        assertEquals(0, MM_DD_YYYY.getMonthOffset());
+        assertEquals(1, YYYY_MM_DD.getMonthOffset());
+        assertEquals(1, DD_SLASH_MM_SLASH_YYYY.getMonthOffset());
+        assertEquals(0, MM_SLASH_DD_SLASH_YYYY.getMonthOffset());
+        assertEquals(1, YYYY_SLASH_MM_SLASH_DD.getMonthOffset());
 
-        assertThat(DD_MM_YYYY.getYearOffset(), is(2));
-        assertThat(MM_DD_YYYY.getYearOffset(), is(2));
-        assertThat(YYYY_MM_DD.getYearOffset(), is(0));
-        assertThat(DD_SLASH_MM_SLASH_YYYY.getYearOffset(), is(2));
-        assertThat(MM_SLASH_DD_SLASH_YYYY.getYearOffset(), is(2));
-        assertThat(YYYY_SLASH_MM_SLASH_DD.getYearOffset(), is(0));
+        assertEquals(2, DD_MM_YYYY.getYearOffset());
+        assertEquals(2, MM_DD_YYYY.getYearOffset());
+        assertEquals(0, YYYY_MM_DD.getYearOffset());
+        assertEquals(2, DD_SLASH_MM_SLASH_YYYY.getYearOffset());
+        assertEquals(2, MM_SLASH_DD_SLASH_YYYY.getYearOffset());
+        assertEquals(0, YYYY_SLASH_MM_SLASH_DD.getYearOffset());
     }
 
     @Test
     public void shouldVerifyFromFormatMethod() {
-        assertThat(fromFormat("dd-MM-yyyy"), is(DD_MM_YYYY));
-        assertThat(fromFormat("MM-dd-yyyy"), is(MM_DD_YYYY));
-        assertThat(fromFormat("yyyy-MM-dd"), is(YYYY_MM_DD));
-        assertThat(fromFormat("dd/MM/yyyy"), is(DD_SLASH_MM_SLASH_YYYY));
-        assertThat(fromFormat("MM/dd/yyyy"), is(MM_SLASH_DD_SLASH_YYYY));
-        assertThat(fromFormat("yyyy/MM/dd"), is(YYYY_SLASH_MM_SLASH_DD));
+        assertEquals(DD_MM_YYYY, fromFormat("dd-MM-yyyy"));
+        assertEquals(MM_DD_YYYY, fromFormat("MM-dd-yyyy"));
+        assertEquals(YYYY_MM_DD, fromFormat("yyyy-MM-dd"));
+        assertEquals(DD_SLASH_MM_SLASH_YYYY, fromFormat("dd/MM/yyyy"));
+        assertEquals(MM_SLASH_DD_SLASH_YYYY, fromFormat("MM/dd/yyyy"));
+        assertEquals(YYYY_SLASH_MM_SLASH_DD, fromFormat("yyyy/MM/dd"));
     }
 }

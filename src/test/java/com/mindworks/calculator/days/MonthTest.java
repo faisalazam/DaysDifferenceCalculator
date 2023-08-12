@@ -1,6 +1,6 @@
 package com.mindworks.calculator.days;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static com.mindworks.calculator.days.Month.APRIL;
 import static com.mindworks.calculator.days.Month.AUGUST;
@@ -17,7 +17,7 @@ import static com.mindworks.calculator.days.Month.SEPTEMBER;
 import static com.mindworks.calculator.days.Month.UNKNOWN_OR_INVALID;
 import static com.mindworks.calculator.days.Month.fromNumber;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class MonthTest {
 

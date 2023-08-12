@@ -1,6 +1,6 @@
 package com.mindworks.calculator.days;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
 
@@ -8,7 +8,7 @@ import static com.mindworks.calculator.days.DateFormat.DD_SLASH_MM_SLASH_YYYY;
 import static com.mindworks.calculator.days.DaysDifferenceCalculator.calculate;
 import static com.mindworks.calculator.days.MyDate.parse;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class DaysDifferenceCalculatorTest {
     @Test

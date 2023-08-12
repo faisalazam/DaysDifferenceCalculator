@@ -24,7 +24,7 @@ public class DaysDifferenceCalculator {
     }
 
     private static long convertDateToNumberOfDays(final MyDate date) {
-        final long daysInYears = (date.getYear() - FIRST_VALID_YEAR) * DAYS_IN_YEAR;
+        final long daysInYears = (long) (date.getYear() - FIRST_VALID_YEAR) * DAYS_IN_YEAR;
         return daysInYears + date.getMonth().getDaysUpto() + date.getDay();
     }
 

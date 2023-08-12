@@ -1,7 +1,6 @@
 package com.mindworks.calculator.days;
 
-import javafx.util.Pair;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -27,13 +26,13 @@ import static java.lang.String.format;
 import static java.util.EnumSet.complementOf;
 import static java.util.EnumSet.of;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class MyDateTest {
 
     @Test
-    public void shouldParseSuccessfullyWithDefaultDateFormatWhenDateStringIsBetween19010101And29991231() throws ParseException {
+    public void shouldParseSuccessfullyWithDefaultDateFormatWhenDateStringIsBetween19010101And29991231() {
         final List<String> validDateStrings = new ArrayList<>();
         validDateStrings.add("1901/01/01"); //first possible valid date
         validDateStrings.add("1901/01/02");
@@ -49,7 +48,7 @@ public class MyDateTest {
     }
 
     @Test
-    public void shouldParseSuccessfullyWithSpecifiedDateFormatWhenDateStringIsBetween19010101And29991231() throws ParseException {
+    public void shouldParseSuccessfullyWithSpecifiedDateFormatWhenDateStringIsBetween19010101And29991231() {
         final List<Pair<String, DateFormat>> validDateStrings = new ArrayList<>();
         validDateStrings.add(new Pair<>("15-12-1901", DD_MM_YYYY));
         validDateStrings.add(new Pair<>("11-21-1945", MM_DD_YYYY));
@@ -91,7 +90,7 @@ public class MyDateTest {
     }
 
     @Test
-    public void shouldThrowParseExceptionWhenYearAndDayAreValidButMonthIsEitherLessThan1OrGreaterThan12() throws ParseException {
+    public void shouldThrowParseExceptionWhenYearAndDayAreValidButMonthIsEitherLessThan1OrGreaterThan12() {
         final List<String> invalidDateStrings = new ArrayList<>();
         invalidDateStrings.add("1922/-1/31");
         invalidDateStrings.add("2045/00/21");
@@ -119,7 +118,7 @@ public class MyDateTest {
     }
 
     @Test
-    public void shouldThrowParseExceptionForLeapYearWhenYearAndMonthAreValidButDayIsEitherLessThan1OrNotWithinMonthlyRange() throws ParseException {
+    public void shouldThrowParseExceptionForLeapYearWhenYearAndMonthAreValidButDayIsEitherLessThan1OrNotWithinMonthlyRange() {
         for (Month month : getValidMonths()) {
             final List<String> invalidDateStrings = new ArrayList<>();
             invalidDateStrings.add(format("%d/%02d/%02d", 2000, month.getMonthNumber(), -1));
@@ -149,7 +148,7 @@ public class MyDateTest {
     }
 
     @Test
-    public void shouldParseSuccessfullyFor29thOfFebruaryWhenYearIsALeapYear() throws ParseException {
+    public void shouldParseSuccessfullyFor29thOfFebruaryWhenYearIsALeapYear() {
         final List<String> validDateStrings = new ArrayList<>();
         validDateStrings.add("2000/02/29");
         validDateStrings.add("2828/02/29");
@@ -159,7 +158,7 @@ public class MyDateTest {
     }
 
     @Test
-    public void shouldThrowParseExceptionFor29thOfFebruaryWhenYearIsNotALeapYear() throws ParseException {
+    public void shouldThrowParseExceptionFor29thOfFebruaryWhenYearIsNotALeapYear() {
         final List<String> invalidDateStrings = new ArrayList<>();
         invalidDateStrings.add("2051/02/29");
         invalidDateStrings.add("2829/02/29");
@@ -213,7 +212,7 @@ public class MyDateTest {
     }
 
     @Test
-    public void shouldVerifyConversionOfDateFromOneFormatToAnother() throws ParseException {
+    public void shouldVerifyConversionOfDateFromOneFormatToAnother() {
         assertThat(convert("12-22-2001", MM_DD_YYYY, DD_MM_YYYY), is("22-12-2001"));
         assertThat(convert("1901/01/01", YYYY_SLASH_MM_SLASH_DD, DD_MM_YYYY), is("01-01-1901"));
         assertThat(convert("2901-11-21", YYYY_MM_DD, MM_SLASH_DD_SLASH_YYYY), is("11/21/2901"));
@@ -222,7 +221,7 @@ public class MyDateTest {
     @Test
     public void shouldVerifyEqualsAndHasCodeMethods() throws ParseException {
         final MyDate myDate1 = parse("1983/12/22");
-        final MyDate myDate2 = myDate1;
+        final MyDate myDate2 = parse("1983/12/22");
         assertThat(myDate1.equals(myDate2), is(true));
         assertThat(myDate1.hashCode(), is(myDate2.hashCode()));
 
@@ -237,7 +236,7 @@ public class MyDateTest {
         assertThat(parse("1989/01/22").hashCode(), is(parse("1989/03/22").hashCode()));
 
         assertThat(parse("1983/12/22").equals(null), is(false));
-        assertThat(parse("1983/12/22").equals("1983/12/22"), is(false));
+        assertThat(parse("1983/12/22").toString().equals("1983/12/22"), is(true));
         assertThat(parse("1983/12/22").equals(parse("1984/12/22")), is(false));
         assertThat(parse("1983/12/22").equals(parse("1983/11/22")), is(false));
         assertThat(parse("1983/12/22").equals(parse("1983/12/21")), is(false));
@@ -253,7 +252,6 @@ public class MyDateTest {
 
     private void verifyDateStringIsParsedSuccessfully(final List<String> validDateStrings) {
         validDateStrings
-                .stream()
                 .forEach(
                         validDateString -> {
                             try {
@@ -271,12 +269,11 @@ public class MyDateTest {
 
     private void verifyDateStringIsParsedSuccessfullyWithSpecifiedFormat(final List<Pair<String, DateFormat>> validDateStrings) {
         validDateStrings
-                .stream()
                 .forEach(
                         validDateString -> {
                             try {
-                                final String dateStr = validDateString.getKey();
-                                final DateFormat dateFormat = validDateString.getValue();
+                                final String dateStr = validDateString.fst();
+                                final DateFormat dateFormat = validDateString.snd();
                                 final MyDate myDate = parse(dateStr, dateFormat);
                                 final String[] dateParts = dateStr.split(dateFormat.getSeparator());
                                 assertThat(myDate.getYear(), is(parseInt(dateParts[dateFormat.getYearOffset()])));
@@ -292,7 +289,6 @@ public class MyDateTest {
 
     private void verifyInvalidDateStringThrowsParseException(final List<String> invalidDateStrings) {
         invalidDateStrings
-                .stream()
                 .forEach(
                         invalidDateString -> {
                             try {

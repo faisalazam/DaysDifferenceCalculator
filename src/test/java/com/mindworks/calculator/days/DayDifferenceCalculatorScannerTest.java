@@ -1,7 +1,7 @@
 package com.mindworks.calculator.days;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
@@ -22,13 +22,17 @@ import static java.lang.System.setOut;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.endsWith;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
+/*
+    Don't forget to add the following to VM option if running this class from IDE
+    --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED
+*/
 public class DayDifferenceCalculatorScannerTest {
     private OutputStream outputStream;
     private DayDifferenceCalculatorScanner dayDifferenceCalculatorScanner;
 
-    @Before
+    @BeforeEach
     public void setup() {
         outputStream = new ByteArrayOutputStream();
         final PrintStream printStream = new PrintStream(outputStream);

@@ -15,10 +15,10 @@ public enum Month {
     DECEMBER(12, 31, 334, true),
     UNKNOWN_OR_INVALID(0, 0, 0, false);
 
-    private int days;
-    private int daysUpto;
-    private int monthNumber;
-    private boolean isAfterFebruary;
+    private final int days;
+    private final int daysUpto;
+    private final int monthNumber;
+    private final boolean isAfterFebruary;
 
     Month(final int monthNumber, final int days, final int daysUpto, final boolean isAfterFebruary) {
         this.days = days;
